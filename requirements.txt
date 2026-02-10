@@ -1,4 +1,7 @@
-transformers>=4.35,<5.0
-torch>=2.0,<3.0
-captum>=0.6,<1.0
-numpy>=1.23,<2.0
+transformers==4.35
+torch==2.0
+captum==0.6
+numpy==1.23
+matplotlib==3.5
+seaborn==0.12
+pandas==1.5
