@@ -1,48 +1,51 @@
-## interpreting-generative-models
+### 🧩interpreting-generative-models
 
 This repository contains exploratory work focused on understanding and inspecting the internal behavior of generative language models during text generation.
 
-Rather than treating models as black boxes, the project aims to examine what internal signals (such as attention weights and hidden states) are available and how they relate to the generated output.
+Rather than treating models as black boxes, this project examines what internal signals (such as attention weights and hidden states) are available and how they relate to the generated output.
 
 ---
 
-## Goal
+#### Current Contents
 
-The primary goal of this project is to build intuition around how generative models produce explanations and multi-token outputs, and to establish a clear baseline for inspecting generation-time internals before attempting any form of attribution or interpretation.
+#### `01_llm_interpretability_baseline.ipynb`
+**Establishes foundation for transformer internals analysis**
+- Loads GPT-Neo-125M model
+- Generates text with attention and hidden state tracking
+- Inspects attention tensor shapes and statistics across layers
+- Analyzes hidden state evolution from input to output layers
+- Provides baseline understanding of model internals
 
-The emphasis is on observation and analysis, not on proposing a finalized explanation method.
+**Key observations:**
+- Attention exhibits sharp focus (low mean, peaks ~1.0)
+- Hidden state magnitudes grow in deeper layers
+- Representation norms increase substantially from first to last layer
+
+#### `02_attention_pattern_analysis.ipynb`
+**Deep dive into attention head specialization**
+- Classifies all 144 attention heads (12 layers × 12 heads)
+- Identifies specialized head types: previous-token, first-token, focused, broad
+- Visualizes attention patterns with heatmaps
+- Tracks attention strategy evolution across network depth
+
+**Key findings:**
+- Strong head specialization (e.g., Layer 5 Head 8: 99.96% previous-token attention)
+- Layer progression: scattered (early) → sequential (middle) → global (late)
+- Layer 8 dominates first-token attention, suggesting aggregation role
+- Clear computational strategy from broad exploration to focused output
+---
+
+#### Model Details
+
+- **Model:** EleutherAI/gpt-neo-125M
+- **Architecture:** 12 layers, 12 attention heads per layer, 768 hidden dimensions
+- **Parameters:** 125 million
+- **Type:** Autoregressive transformer (GPT-style)
 
 ---
 
-## Scope
+#### Status
 
-This repository focuses on:
-- autoregressive text generation,
-- inspection of attention tensors and hidden states,
-- simple, descriptive visualizations of generation behavior.
+Active development with completed baseline and attention analyses.
 
 ---
-
-## Current contents
-
-- `01_generation_internals.ipynb`  
-  - loads a small causal language model,
-  - generates a short response to a simple prompt,
-  - inspects attention and hidden-state shapes
-
-This notebook serves as a starting point and baseline.
-
----
-
-## Status
-
-Early exploratory stage.  
-The repository is intended to evolve incrementally as additional analyses are added.
-
----
-
-## Notes
-
-- Attention-based signals are treated as descriptive indicators only.
-- All results should be interpreted with caution.
-- Simplicity and clarity are prioritized over completeness.
