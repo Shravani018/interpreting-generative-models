@@ -6,6 +6,12 @@ Rather than treating models as black boxes, this project examines what internal 
 
 ---
 
+#### Goal:
+Building intuition about how transformers process information by 
+analyzing attention patterns and hidden state evolution.
+
+---
+
 #### Current Contents
 
 #### `01_llm_interpretability_baseline.ipynb`
