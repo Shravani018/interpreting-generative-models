@@ -45,6 +45,23 @@ analyzing attention patterns and hidden state evolution.
 - Layer progression: scattered (early) → sequential (middle) → global (late)
 - Layer 8 dominates first-token attention, suggesting aggregation role
 - Clear computational strategy from broad exploration to focused output
+
+#### `03_hidden_state_analysis.ipynb`
+**Hidden state trajectory analysis across layers**
+- Extracts token representation trajectories across all 13 layers (embedding + 12)
+- Computes geometric metrics: L2 norms, cosine similarity, and Euclidean distance 
+  between consecutive layers
+- Analyzes pairwise layer similarity to identify representational clusters
+
+**Key findings:**
+- First token norm spikes dramatically in layers 6–8 (~10k), directly corroborating 
+  the aggregation role identified in notebook 02
+- Representation directions are highly stable through middle layers (cosine sim ~1.0) 
+  but undergo sharp geometric reorganization at transitions 0→1 and 11→12
+- Largest Euclidean shifts occur at boundary layers; middle layers (3–4, 7–9) show 
+  minimal change (~100–150), confirming a stable mid-network processing plateau
+- Layers 2–9 form a high-similarity block (0.91–1.00), while layers 0 and 12 are 
+  geometrically isolated — confirming distinct input, processing, and output regimes
 ---
 
 #### Model Details
