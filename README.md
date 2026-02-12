@@ -5,7 +5,6 @@
 ![Focus](https://img.shields.io/badge/Focus-Transformer%20Interpretability-red)
 ![Analysis](https://img.shields.io/badge/Analysis-Attention%20%26%20Hidden%20States-green)
 ![Architecture](https://img.shields.io/badge/Architecture-12%20Layers%20%C3%97%2012%20Heads-purple)
-![Libraries](https://img.shields.io/badge/Libraries-PyTorch%20%7C%20Transformers-skyblue)
 
 </p align="center">
 
